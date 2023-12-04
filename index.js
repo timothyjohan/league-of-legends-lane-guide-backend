@@ -23,7 +23,7 @@ app.post('/api/chat', async (req, res) => {
 
         const completion = await openai.chat.completions.create({
             messages:[
-                {"role": "system", "content": `I am playing as a ${champion} ${lane} using the rune ${my_rune}, and I am fighting a ${enemy} ${lane} using the rune ${enemy_rune}, what Is the starting item i should buy? what ability do i start? what do i do to win ?  provide me per level strategy until level 6. Only answer my questions, do not give additional informations unless it's crucial`},
+                {"role": "system", "content": `I am playing as a ${champion} ${lane} using the keystone ${my_rune}, and I am fighting a ${enemy} ${lane} using the keystone ${enemy_rune}, what Is the starting item i should buy? what item do i rush? what is my first back item? what ability do i start? what do i do to win ?  provide me per level strategy until level 6. Only answer my questions, do not give additional informations unless it's crucial Check it from mobafire I know you do not have direct access to external website but just use the data you have about it`},
                 
             ],
             model: "gpt-3.5-turbo",
