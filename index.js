@@ -48,8 +48,10 @@ app.get('/api/champions', async (req, res) => {
         const arrReq = Object.keys(request.data.data)
         arrReq.forEach((champ)=>{
             let newChamp ={
+                id:result[champ].id,
                 name: result[champ].name,
-                img: `https://ddragon.leagueoflegends.com/cdn/13.23.1/img/champion/${result[champ].image.full}`
+                img: `https://ddragon.leagueoflegends.com/cdn/13.23.1/img/champion/${result[champ].image.full}`,
+                splash: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${result[champ].id}_0.jpg`
             }
             champions.push(newChamp)
         })
