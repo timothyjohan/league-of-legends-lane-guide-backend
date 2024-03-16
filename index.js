@@ -67,3 +67,45 @@ app.get('/api/champions', async (req, res) => {
 app.listen(port, async ()  => { 
     console.log(`server is running on port ${port}`);
 });
+
+app.post('/api/gpt3', async (req, res) => {
+    const {chat} = req.body
+    try {
+
+        const completion = await openai.chat.completions.create({
+            messages:[
+                {"role": "system", "content": `${chat}. No yapping`},
+                
+            ],
+            model: "gpt-3.5-turbo",
+            max_tokens: 450
+        });
+        console.log(completion);
+        return res.status(200).send(completion.choices[0].message.content)
+        
+    } catch (error) {
+        return res.status(500).send(error.error)
+        
+    }
+})
+
+app.post('/api/gpt4', async (req, res) => {
+    const {chat} = req.body
+    try {
+
+        const completion = await openai.chat.completions.create({
+            messages:[
+                {"role": "system", "content": `${chat}. do not explain just give me the code`},
+                
+            ],
+            model: "gpt-4",
+            // max_tokens: 450
+        });
+        console.log(completion);
+        return res.status(200).send(completion.choices[0].message.content)
+        
+    } catch (error) {
+        return res.status(500).send(error.error)
+        
+    }
+})
